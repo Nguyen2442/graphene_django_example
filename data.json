@@ -1,0 +1,64 @@
+[
+    {
+        "model": "api.book",
+        "pk": 1,
+        "fields": {
+            "title": "The One Thing",
+            "author_id": 1,
+            "year_published": 2002,
+            "review": 3,
+            "category_id": 1
+        }
+    },
+    {
+        "model": "api.book",
+        "pk": 2,
+        "fields": {
+            "title": "Python Crash Course",
+            "author_id": 2,
+            "year_published": 2015,
+            "review": 5,
+            "category_id": 1
+        }
+    },
+
+    {
+        "model": "api.author",
+        "pk": 1,
+        "fields": {
+            "name":"elysion",
+            "age": "15"
+        }
+    },
+    {
+        "model": "api.author",
+        "pk": 2,
+        "fields": {
+            "name": "elysion2",
+            "age": "16"
+        }
+    },
+
+    {
+        "model": "api.category",
+        "pk": 1,
+        "fields": {
+            "name": "Detective"
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 2,
+        "fields": {
+            "name": "Science Fiction"
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 3,
+        "fields": {
+            "name": "New"
+        }
+    }
+
+]
