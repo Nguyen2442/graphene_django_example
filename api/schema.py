@@ -49,5 +49,40 @@ class Query(graphene.ObjectType):
     def resolve_category(self, info, id):
         return Category.objects.get(pk=id)
     
+class AuthorInput(graphene.InputObjectType):
+    id = graphene.ID()
+    name = graphene.String()
     
-schema = graphene.Schema(query=Query)
+    
+class BookInput(graphene.InputObjectType):
+    id = graphene.ID()
+    title = graphene.String()
+    author = AuthorInput()
+    year_published = graphene.String()
+    review = graphene.Int()
+    
+class CreateBook(graphene.Mutation):
+    class Arguments:
+        book_data = BookInput(required=True)
+        
+    book = graphene.Field(BookType)
+    
+    
+    @staticmethod
+    def mutate(root, info, book_data=None):
+        book_instance = Book(
+            title=book_data.title,
+            author=book_data.author,
+            year_published=book_data.year_published,
+            review=book_data.review,
+        )
+        
+        book_instance.save()
+        
+        return CreateBook(book=book_instance)
+        
+    
+    
+    
+    
+schema = graphene.Schema(query=Query, mutation=CreateBook)
