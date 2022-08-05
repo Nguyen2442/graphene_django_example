@@ -2,9 +2,9 @@ from django.db import models
 
 class Book(models.Model):
     title = models.CharField(max_length=100)
-    author = models.OneToOneField('Author', on_delete=models.CASCADE)
     year_published = models.CharField(max_length=10)
     review = models.PositiveIntegerField()
+    author = models.ForeignKey('Author', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     
     def __str__(self):
